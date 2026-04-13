@@ -94,7 +94,7 @@ docker run -d \
   --restart=always \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v portainer_data:/data \
-  portainer/portainer-ce:2.9.3
+  portainer/portainer-ce:latest
 ```
 
 ### 1.3 — Restart Docker (required after Portainer install)
