@@ -143,6 +143,19 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
       - targets: ['localhost:9090']
+```
+
+```yaml
+global:
+  scrape_interval: 15s   # Default: scrape every 15 seconds
+
+scrape_configs:
+
+  # Job 1: Prometheus scrapes itself
+  - job_name: 'prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['localhost:9090']
 
   # Job 2: Node Exporter — collects host/OS metrics
   - job_name: 'node_exporter'
@@ -154,6 +167,7 @@ scrape_configs:
     static_configs:
       - targets: ['cadvisor:8080']
 ```
+
 
 > **Note:** `node_exporter` and `cadvisor` use container names as hostnames because all services run in the same Docker network.
 
