@@ -86,4 +86,32 @@ ________________________________________
  10. CPU usage (single container)
 rate(container_cpu_usage_seconds_total{container_label_com_docker_compose_service="grafana"}[1m]) * 100
 👉 Debug specific container
+***********************************************************************************************************************************************************************************************
+WHY we are using
+container_label_com_docker_compose_service
 
+instead of
+name
+
+🔴 What OLD dashboards expect
+Old Grafana dashboards (like 193, 893) were built assuming:
+name="nginx"
+👉 Simple container name
+
+🟢 What NEW cAdvisor actually gives
+Modern cAdvisor + Docker Compose exposes labels like:
+
+container_label_com_docker_compose_service="grafana"
+container_label_com_docker_compose_container_number="1"
+container_label_com_docker_compose_project="monitoring"
+
+👉 These come from Docker labels, not from cAdvisor itself
+🔥 Why name is gone
+
+👉 Docker changed how metadata is exposed
+👉 cAdvisor now forwards Docker labels instead of custom fields
+| Old                 | New            |
+| ------------------- | -------------- |
+| `name`              | ❌ removed      |
+| `container_name`    | ❌ removed      |
+| `container_label_*` | ✅ standard now |
