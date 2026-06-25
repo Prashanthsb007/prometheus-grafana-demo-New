@@ -96,7 +96,22 @@ docker run -d \
   -v portainer_data:/data \
   portainer/portainer-ce:latest
 ```
+Not required
+```
+When is port 8000 required?
+Port 8000 is only needed if you plan to:
 
+Manage multiple remote Docker hosts using Portainer Edge Agent
+Create a centralized Portainer server that controls remote servers
+For example:
+Portainer Server (9000)
+        │
+        │ Port 8000
+        ▼
+Remote Server 1 (Edge Agent)
+Remote Server 2 (Edge Agent)
+Remote Server 3 (Edge Agent)
+```
 ### 1.3 — Restart Docker (required after Portainer install)
 
 ```bash
