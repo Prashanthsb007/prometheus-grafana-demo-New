@@ -361,7 +361,7 @@ You now have a full **Node Exporter Full** dashboard showing:
 1. Go to: **Dashboards → Import**
 2. Enter code:
    ```
-   193
+   193 or 10619
    ```
 3. Click **Load**
 4. Select Prometheus as the data source
